@@ -54,6 +54,12 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
+              name="WalkingAsymmetry"
+              component={WalkingAsymmetry}
+              options={{ headerShown: false }}
+            />
+            
+            <Stack.Screen
               name="Group"
               component={Group}
               options={{ headerShown: false }}
