@@ -65,13 +65,13 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="GroupModal"
-              component={GroupModal}
+              name="GeneralMap"
+              component={GeneralMap}
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="GeneralMap"
-              component={GeneralMap}
+              name="GroupModal"
+              component={GroupModal}
               options={{ headerShown: false }}
             />
             <Stack.Screen
