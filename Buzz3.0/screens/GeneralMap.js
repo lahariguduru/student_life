@@ -111,37 +111,7 @@ const GeneralMap = () => {
             </View>
           </View>
         </Pressable>
-        <View style={styles.navigation}>
-          <Pressable
-            style={[styles.navigation1, styles.auraTequilaPosition]}
-            onPress={() => navigation.navigate("GeneralMap")}
-          />
-          <Image
-            style={[styles.homeIcon, styles.userPosition]}
-            contentFit="cover"
-            source={require("../assets/home.png")}
-          />
-          <Pressable
-            style={[styles.location, styles.userPosition]}
-            onPress={() => navigation.navigate("GeneralMap")}
-          >
-            <Image
-              style={styles.iconLayout}
-              contentFit="cover"
-              source={require("../assets/location.png")}
-            />
-          </Pressable>
-          <Pressable
-            style={[styles.user, styles.userPosition]}
-            onPress={() => navigation.navigate("UserModal")}
-          >
-            <Image
-              style={styles.iconLayout}
-              contentFit="cover"
-              source={require("../assets/user.png")}
-            />
-          </Pressable>
-        </View>
+        
         <Image
           style={[styles.generalMapChild, styles.userChildPosition]}
           contentFit="cover"

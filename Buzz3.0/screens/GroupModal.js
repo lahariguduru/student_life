@@ -400,6 +400,7 @@ const GroupModal = () => {
           <Text style={[styles.invite5, styles.inviteTypo]}>Invite</Text>
           <Text style={[styles.invite5, styles.inviteTypo]}>Invite</Text>
         </View>
+        
         <View style={[styles.userAParent5, styles.groupParentLayout]}>
           <Image
             style={[styles.userAIcon, styles.userLayout]}
@@ -534,52 +535,52 @@ const GroupModal = () => {
       <Text style={[styles.date1, styles.date1Typo]}>Date</Text>
       <Text style={[styles.time1, styles.date1Typo]}>Time</Text>
       <View style={styles.arrowComponent}>
-        <Image
-          style={[styles.arrowComponentChild, styles.plusPosition]}
-          contentFit="cover"
-          source={require("../assets/rectangle-2.png")}
-        />
-        <Pressable
-          style={styles.location}
-          onPress={() => navigation.navigate("GeneralMap")}
-        >
           <Image
-            style={[styles.icon, styles.iconLayout]}
+            style={[styles.arrowComponentChild, styles.plusPosition]}
             contentFit="cover"
-            source={require("../assets/location1.png")}
+            source={require("../assets/rectangle-2.png")}
           />
-        </Pressable>
-        <Pressable
-          style={[styles.home, styles.homePosition]}
-          onPress={() => navigation.navigate("HomePage")}
-        >
-          <Image
-            style={[styles.icon, styles.iconLayout]}
-            contentFit="cover"
-            source={require("../assets/home1.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.plus, styles.plusPosition]}
-          onPress={() => navigation.navigate("GroupModal")}
-        >
-          <Image
-            style={[styles.icon, styles.iconLayout]}
-            contentFit="cover"
-            source={require("../assets/plus.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.profile, styles.homePosition]}
-          onPress={() => navigation.navigate("Profile")}
-        >
-          <Image
-            style={[styles.icon, styles.iconLayout]}
-            contentFit="cover"
-            source={require("../assets/profile.png")}
-          />
-        </Pressable>
-      </View>
+          <Pressable
+            style={styles.location1}
+            onPress={() => navigation.navigate("GeneralMap")}
+          >
+            <Image
+              style={[styles.icon4, styles.icon4Layout]}
+              contentFit="cover"
+              source={require("../assets/location1.png")}
+            />
+          </Pressable>
+          <Pressable
+            style={[styles.home, styles.homePosition]}
+            onPress={() => navigation.navigate("HomePage")}
+          >
+            <Image
+              style={[styles.icon4, styles.icon4Layout]}
+              contentFit="cover"
+              source={require("../assets/home1.png")}
+            />
+          </Pressable>
+          <Pressable
+            style={[styles.plus, styles.plusPosition]}
+            onPress={() => navigation.navigate("GroupModal")}
+          >
+            <Image
+              style={[styles.icon4, styles.icon4Layout]}
+              contentFit="cover"
+              source={require("../assets/plus.png")}
+            />
+          </Pressable>
+          <Pressable
+            style={[styles.profile, styles.homePosition]}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <Image
+              style={[styles.icon4, styles.icon4Layout]}
+              contentFit="cover"
+              source={require("../assets/profile.png")}
+            />
+          </Pressable>
+        </View>
     </View>
   );
 };
@@ -945,7 +946,7 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     width: "100%",
   },
-  location: {
+  location1: {
     left: "43.75%",
     top: "15.38%",
     right: "40.63%",
@@ -982,6 +983,22 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: Color.colorWhite,
     borderRadius: Border.br_11xl,
+  },
+  plusPosition: {
+    bottom: "15.38%",
+    top: "7.69%",
+    height: "76.92%",
+    position: "absolute",
+  },
+  homePosition: {
+    height: "58.97%",
+    bottom: "23.08%",
+    top: "17.95%",
+    position: "absolute",
+  },
+  icon4: {
+    height: "100%",
+    width: "100%",
   },
 });
 
