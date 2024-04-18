@@ -8,6 +8,17 @@ import { useNavigation } from "@react-navigation/native";
 import UserModal3 from "../components/UserModal3";
 import { Border, Color, FontFamily, FontSize } from "../GlobalStyles";
 
+
+// insertions from meli
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import IconS from "../assets/icon_S.png";
+import IconK from "../assets/icon_K.png";
+import IconF from "../assets/icon_F.png";
+import IconG from "../assets/icon_G.png";
+import IconH from "../assets/icon_H.png";
+
+
+
 const GeneralMap = () => {
   const [userAOnMapVisible, setUserAOnMapVisible] = useState(false);
   const [userAOnMap1Visible, setUserAOnMap1Visible] = useState(false);
@@ -55,11 +66,29 @@ const GeneralMap = () => {
           batteryRight={0}
           batteryLeft={0}
         />
-        <Image
+
+        <View style={styles.container}>
+          <MapView
+            style={styles.map}
+            provider={PROVIDER_GOOGLE}
+            initialRegion={{
+              latitude: 30.2874,
+              longitude: -97.741430,
+              latitudeDelta: 0.055,
+              longitudeDelta: 0.030,
+            }}>
+
+            {renderMarkers()}
+          </MapView>
+
+        </View>
+
+        {/* <Image
           style={styles.basemapImageIcon}
           contentFit="cover"
           source={require("../assets/basemap-image1.png")}
-        />
+        /> */}
+
         <Pressable
           style={[styles.userAOnMap, styles.userAOnMapPosition]}
           onPress={openUserAOnMap}
@@ -342,7 +371,104 @@ const GeneralMap = () => {
   );
 };
 
+
+// insertions from meli
+// An array of the markers for each user + friends' locations
+const markers = [
+  {
+    // walking along Guad
+    coordinate: {
+      latitude: 30.28463,
+      longitude: -97.74184,
+    },
+    title: "Sarah",
+    image: IconS
+  },
+
+  {
+    // at Cava
+    coordinate: {
+      latitude: 30.2886,
+      longitude: -97.74167,
+    },
+    title: "Krithi",
+    image: IconK
+  },
+
+  {
+    // At Skyloft party
+    coordinate: {
+      latitude: 30.28657,
+      longitude: -97.74364,
+    },
+    title: "Faith",
+    image: IconF
+  },
+
+  {
+    // At his apartment in 26 West - grayed out
+    coordinate: {
+      latitude: 30.29087,
+      longitude: -97.74368,
+    },
+    title: "Grayson",
+    image: IconG
+  },
+
+  {
+    // At Skyloft party
+    coordinate: {
+      latitude: 30.286575,
+      longitude: -97.743417,
+    },
+    title: "Holly",
+    image: IconH
+  }
+]
+
+// A function that actually displays the markers
+const renderMarkers = () => {
+  return markers.map((marker, index) => (
+    <Marker
+      key={index}
+      coordinate={marker.coordinate}
+      title={marker.title}
+    >
+      <Image source={marker.image}
+        style={styles.marker}>
+      </Image>
+    </Marker>
+  ));
+};
+
+
+
+
+
 const styles = StyleSheet.create({
+
+  // insertions from meli
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+
+  marker: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+    borderRadius: 30,
+    borderWidth: 2,
+    borderColor: 'white'
+  },
+
+
   userAOnMapPosition: {
     top: 200,
     left: 61,
