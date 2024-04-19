@@ -33,16 +33,23 @@ const HomePage = () => {
         onPress={() => navigation.navigate("HeartRate")}
       />
       <View style={[styles.userPercentage, styles.userLayout]}>
+        
         <Image
+        style={styles.userPercentageIcon}
+        contentFit="cover"
+        source={require("../assets/user-percentage.png")}
+        />
+       <Image
           style={[styles.userPercentageChild, styles.userLayout]}
           contentFit="cover"
           source={require("../assets/ellipse-1.png")}
         />
-        <Image
+        {/* <Image
           style={[styles.userPercentageChild, styles.userLayout]}
           contentFit="cover"
           source={require("../assets/ellipse-2.png")}
-        />
+        />  */}
+        
         <Text style={styles.text}>45%</Text>
       </View>
       <Pressable
@@ -140,8 +147,8 @@ const styles = StyleSheet.create({
     backgroundColor: Color.colorWhite,
   },
   userLayout: {
-    height: 100,
-    width: 100,
+    height: 100, // SOMETHING IS WRONG 
+    width: 100, // SOMETHING IS WRONG
     position: "absolute",
   },
   pjPartyTypo: {
