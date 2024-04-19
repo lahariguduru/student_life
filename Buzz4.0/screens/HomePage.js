@@ -347,7 +347,7 @@ const styles = StyleSheet.create({
     top: 333,
     left: 265,
     height: 22,
-    width: 63,
+    width: 63, 
     position: "absolute",
   },
   walkingIcon: {

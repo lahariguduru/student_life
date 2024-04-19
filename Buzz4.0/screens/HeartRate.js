@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
     borderColor: Color.colorBlack,
     borderWidth: 1,
     flex: 1,
-    width: "100%",
+    width: "100%", 
     height: 852,
   },
 });
