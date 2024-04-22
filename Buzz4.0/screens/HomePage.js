@@ -24,16 +24,18 @@ const HomePage = () => {
       >
         <Text style={[styles.hiSarah1, styles.hiSarah1Typo]}>Hi, Sarah</Text>
       </Pressable>
+
       <Text style={[styles.connected, styles.hiSarah1Typo]}>connected</Text>
-      <Image
-        style={[styles.friendsIcon, styles.generalMapPosition]}
-        contentFit="cover"
-        source={require("../assets/friends.png")}
-      />
       <Image
         style={styles.homePageChild}
         contentFit="cover"
         source={require("../assets/ellipse-12.png")}
+      />
+
+      <Image
+        style={[styles.friendsIcon, styles.generalMapPosition]}
+        contentFit="cover"
+        source={require("../assets/friends.png")}
       />
       <Pressable
         style={[styles.me, styles.meShadowBox]}
@@ -289,10 +291,11 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   userPercentageIcon: {
-    top: 28,
-    left: 30,
-    width: 84,
-    height: 85,
+    justifyContent: "center",
+    top: 22,
+    left: 22,
+    width: 100,
+    height: 100,
     position: "absolute",
   },
   percent: {
