@@ -85,7 +85,7 @@ const GeneralMap = () => {
               longitudeDelta: 0.010,
             }}>
 
-            {/* Sarah Pressable Marker */}
+            {/* Jonathan Pressable Marker */}
             <Marker
               coordinate={{
                 latitude: 30.28463,
@@ -97,7 +97,7 @@ const GeneralMap = () => {
                 contentFit="cover"
                 style={{width: 69, height: 69, justifyContent: "center", alignItems: "center"}}
               >
-                <Image source={require('../assets/marker_S.png')}
+                <Image source={require('../assets/marker_J.png')}
                 contentFit="cover"
                 style={{width: 50, height: 50}}
               />

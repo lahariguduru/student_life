@@ -31,7 +31,7 @@ const YAxis = () => {
       <Text style={[styles.ft1, styles.ft1Typo]}>8 ft</Text>
       <Text style={[styles.ft2, styles.ft2Position]}>12 ft</Text>
       <Text style={[styles.ft3, styles.ft1Typo]}>16 ft</Text>
-      <Text style={styles.distanceAboveGround}>Distance Above Ground</Text>
+      <Text style={styles.distanceAboveGround}>Vertical Motion</Text>
       <Image
         style={[styles.yAxisItem, styles.axisLayout]}
         contentFit="cover"

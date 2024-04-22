@@ -22,7 +22,7 @@ const HomePage = () => {
         style={styles.hiSarah}
         onPress={() => navigation.navigate("Profile")}
       >
-        <Text style={[styles.hiSarah1, styles.hiSarah1Typo]}>Hi, Sarah</Text>
+        <Text style={[styles.hiSarah1, styles.hiSarah1Typo]}>Hi, Jonathan</Text>
       </Pressable>
 
       <Text style={[styles.connected, styles.hiSarah1Typo]}>connected</Text>
@@ -129,9 +129,9 @@ const HomePage = () => {
 
 const styles = StyleSheet.create({
   hiSarah1Typo: {
-    textAlign: "left",
+    textAlign: "center",
+    justifyContent: "center",
     fontFamily: FontFamily.interRegular,
-    letterSpacing: 0,
   },
   generalMapPosition: {
     width: 300,
@@ -216,18 +216,19 @@ const styles = StyleSheet.create({
   hiSarah1: {
     fontSize: FontSize.size_13xl,
     color: Color.colorBlack,
-    textAlign: "left",
+    textAlign: "center",
+    justifyContent: "center",
     fontFamily: FontFamily.interRegular,
     letterSpacing: 0,
   },
   hiSarah: {
-    left: 129,
+    left: 105,
     top: 82,
     position: "absolute",
   },
   connected: {
     top: 121,
-    left: 138,
+    left: 180,
     fontSize: FontSize.size_3xs,
     color: Color.colorDarkgray,
     textAlign: "left",
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
   },
   homePageChild: {
     top: 126,
-    left: 131,
+    left: 170,
     width: 5,
     height: 5,
     position: "absolute",

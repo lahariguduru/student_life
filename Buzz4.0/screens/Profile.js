@@ -34,7 +34,7 @@ const Profile = () => {
       >
         <View style={[styles.search, styles.searchShadowBox]} />
         <Text style={[styles.firstName, styles.ageTypo]}>First Name</Text>
-        <Text style={[styles.sarahLee, styles.text2Typo]}>Sarah Lee</Text>
+        <Text style={[styles.sarahLee, styles.text2Typo]}>Jonathan Li</Text>
         <View style={[styles.search1, styles.searchShadowBox]} />
         <Text style={[styles.age, styles.ageTypo]}>Age</Text>
         <View style={[styles.search2, styles.searchShadowBox]} />
@@ -43,15 +43,15 @@ const Profile = () => {
         <View style={[styles.search4, styles.searchShadowBox]} />
         <Text style={[styles.weight, styles.ageTypo]}>Weight</Text>
         <Text style={[styles.text, styles.textTypo]}>21</Text>
-        <Text style={[styles.text1, styles.textTypo]}>5’ 5”</Text>
-        <Text style={[styles.text2, styles.text2Typo]}>125</Text>
+        <Text style={[styles.text1, styles.textTypo]}>5’ 8”</Text>
+        <Text style={[styles.text2, styles.text2Typo]}>140</Text>
         <Text style={[styles.phonenumber, styles.ageTypo]}>Phone Number</Text>
         <Text style={[styles.text3, styles.text2Typo]}>(512) 123 - 4567</Text>
       </Pressable>
       <Image
         style={styles.maskGroupIcon}
         contentFit="cover"
-        source={require("../assets/mask-group2.png")}
+        source={require("../assets/marker_J.png")}
       />
       <View style={[styles.editIcon, styles.editIconLayout]}>
         <Image
