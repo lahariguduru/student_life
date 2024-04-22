@@ -7,10 +7,54 @@ import GroupComponent1 from "../components/GroupComponent1";
 import GroupComponent from "../components/GroupComponent";
 import ArrowComponent from "../components/ArrowComponent";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import AppleHealthKit, { Constants } from 'react-native-health';
+
+//CODE FOR IT TO WORK?? 
+// const WalkingAsymmetry = () => {
+//   const navigation = useNavigation();
 
 const WalkingAsymmetry = () => {
-  const navigation = useNavigation();
 
+  const navigation = useNavigation();
+  const options = {
+    permissions: {
+      read: [
+        AppleHealthKit.Constants.Permissions.WalkingAsymmetryPercentage,
+      ],
+      write: [
+      ],
+    },
+  };
+  
+    const readWalkingAsymmetry = () => {
+      let options = {
+        startDate: (new Date(Date.now() - (3 * 24 * 60 * 60 * 1000))).toISOString(), // Example: 3 days ago
+        endDate: (new Date()).toISOString(), // Today
+      };
+  
+      AppleHealthKit.getWalkingAsymmetryPercentage(options, (err, results) => {
+        if (err) {
+          console.log("error reading walking asymmetry: ", err);
+          return;
+        }
+        // ADDED NEW
+        if (results && results.length > 0) {
+          // Process the results
+          const latestAsymmetry = results[results.length - 1].value; // Assuming the latest value is last
+          const averageAsymmetry = results.reduce((acc, curr) => acc + curr.value, 0) / results.length;
+          
+          let previousValue = results.length > 1 ? results[results.length - 2].value : null;
+          let change = previousValue ? latestAsymmetry - previousValue : null;
+  
+          setAsymmetryInfo({
+            latest: latestAsymmetry,
+            average: averageAsymmetry,
+            change: change,
+          });
+        }
+      });
+    };
+  
   return (
     <LinearGradient
       style={styles.walkingAsymmetry}
