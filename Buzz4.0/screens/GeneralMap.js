@@ -9,6 +9,9 @@ import UserModal3 from "../components/UserModal3";
 import UserModal1 from "../components/UserModal1";
 import { Border, FontSize, FontFamily, Color } from "../GlobalStyles";
 
+// insertions from meli
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+
 const GeneralMap = () => {
   const [userTOnMapVisible, setUserTOnMapVisible] = useState(false);
   const navigation = useNavigation();
@@ -69,71 +72,120 @@ const GeneralMap = () => {
   return (
     <>
       <View style={styles.generalMap}>
-        <Image
-          style={styles.basemapImageIcon}
-          contentFit="cover"
-          source={require("../assets/basemap-image.png")}
-        />
-        <Image
-          style={[styles.userAOnMap, styles.userLayout]}
-          contentFit="cover"
-          source={require("../assets/user-a-on-map.png")}
-        />
-        <Pressable
-          style={[styles.userTOnMap, styles.userLayout]}
-          onPress={openUserTOnMap}
-        >
-          <Image
-            style={[styles.userTOnMapChild, styles.userChildPosition]}
-            contentFit="cover"
-            source={require("../assets/group-5.png")}
-          />
-          <View style={[styles.userT, styles.userTLayout]}>
-            <View style={styles.auraTequilaPosition}>
-              <Image
-                style={[styles.clipPathGroup, styles.auraTequilaPosition]}
+        
+        {/* Meli's Map */}
+        <View style={styles.container}>
+          <MapView
+            style={styles.map}
+            provider={PROVIDER_GOOGLE}
+            initialRegion={{
+              latitude: 30.28448,
+              longitude: -97.74222,
+              latitudeDelta: 0.020,
+              longitudeDelta: 0.010,
+            }}>
+
+            {/* Sarah Pressable Marker */}
+            <Marker
+              coordinate={{
+                latitude: 30.28463,
+                longitude: -97.74184,
+              }}
+              onPress={() => navigation.navigate("HeartRate")}>
+
+              <Image source={require('../assets/border_45.png')}
                 contentFit="cover"
-                source={require("../assets/clip-path-group.png")}
+                style={{width: 69, height: 69, justifyContent: "center", alignItems: "center"}}
+              >
+                <Image source={require('../assets/marker_S.png')}
+                contentFit="cover"
+                style={{width: 50, height: 50}}
               />
-              <Text style={styles.h}>H</Text>
-            </View>
-          </View>
-        </Pressable>
-        <Image
-          style={[styles.graysonIcon, styles.userLayout]}
-          contentFit="cover"
-          source={require("../assets/grayson.png")}
-        />
-        <Pressable
-          style={[styles.sarah, styles.userLayout]}
-          onPress={() => navigation.navigate("HeartRate")}
-        >
-          <Image
-            style={styles.iconLayout}
-            contentFit="cover"
-            source={require("../assets/sarah.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.userKOnMap, styles.krithiPosition]}
-          onPress={openUserKOnMap}
-        >
-          <Image
-            style={styles.iconLayout}
-            contentFit="cover"
-            source={require("../assets/user-k-on-map.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.krithi, styles.krithiPosition]}
-          onPress={openKrithiIcon}
-        >
-          <Image
-            style={[styles.icon2, styles.iconLayout]}
-            contentFit="cover"
-            source={require("../assets/krithi.png")}
-          />
-        </Pressable>
+              </Image>
+            </Marker>
+
+
+            {/* Faith Pressable Marker */}
+            <Marker
+              coordinate={{
+                latitude: 30.28657,
+                longitude: -97.74364,
+              }}
+              onPress={openMaskGroupIcon2}>
+              <Image source={require('../assets/border_35.png')}
+                contentFit="cover"
+                style={{width: 69, height: 69, justifyContent: "center", alignItems: "center"}}
+              >
+                <Image source={require('../assets/marker_F.png')}
+                contentFit="cover"
+                style={{width: 50, height: 50}}
+              />
+              </Image>
+            </Marker>
+
+
+            {/* Holly Pressable Marker */}
+            <Marker
+              coordinate={{
+                latitude: 30.28619,
+                longitude: -97.74327,
+              }}
+              onPress={openUserTOnMap}>
+              <Image source={require('../assets/border_45.png')}
+                contentFit="cover"
+                style={{width: 69, height: 69, justifyContent: "center", alignItems: "center"}}
+              >
+                <Image source={require('../assets/marker_H.png')}
+                contentFit="cover"
+                style={{width: 50, height: 50}}
+              />
+              </Image>
+            </Marker>
+
+
+            {/* Grayson Pressable Marker */}
+            <Marker
+              coordinate={{
+                latitude: 30.29087,
+                longitude: -97.74368,
+              }}
+              onPress={openMaskGroupIcon}>
+              <Image source={require('../assets/border_gray.png')}
+                contentFit="cover"
+                style={{width: 69, height: 69, justifyContent: "center", alignItems: "center"}}
+              >
+                <Image source={require('../assets/marker_G.png')}
+                contentFit="cover"
+                style={{width: 50, height: 50}}
+              />
+              </Image>
+            </Marker>
+
+
+            {/* Krithi Pressable Marker */}
+            <Marker
+              coordinate={{
+                latitude: 30.2886,
+                longitude: -97.74167,
+              }}
+              onPress={openUserKOnMap}>
+              <Image source={require('../assets/border_20.png')}
+                contentFit="cover"
+                style={{width: 69, height: 69, justifyContent: "center", alignItems: "center"}}
+              >
+                <Image source={require('../assets/marker_K.png')}
+                contentFit="cover"
+                style={{width: 50, height: 50}}
+              />
+              </Image>
+            </Marker>
+
+
+          </MapView>
+        </View>
+
+
+        {/* NAVIGATION BAR */}
         <ArrowComponent
           arrowComponentPosition="absolute"
           arrowComponentTop={56}
@@ -143,42 +195,15 @@ const GeneralMap = () => {
           onPlusPress={() => navigation.navigate("PartyMode")}
           onProfilePress={() => navigation.navigate("Profile")}
         />
-        <Pressable
-          style={[styles.graysonIcon, styles.userLayout]}
-          onPress={openMaskGroupIcon}
-        >
-          <Image
-            style={styles.iconLayout}
-            contentFit="cover"
-            source={require("../assets/mask-group.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.graysonIcon, styles.userLayout]}
-          onPress={openMaskGroupIcon1}
-        >
-          <Image
-            style={styles.iconLayout}
-            contentFit="cover"
-            source={require("../assets/mask-group.png")}
-          />
-        </Pressable>
-        <Pressable
-          style={[styles.userAOnMap, styles.userLayout]}
-          onPress={openMaskGroupIcon2}
-        >
-          <Image
-            style={styles.iconLayout}
-            contentFit="cover"
-            source={require("../assets/mask-group1.png")}
-          />
-        </Pressable>
+
+        {/* White bottom pop up */}
         <Image
           style={[styles.generalMapChild, styles.userChildPosition]}
           contentFit="cover"
-          source={require("../assets/group-31.png")}
+          source={require("../assets/map_popup.png")}
         />
       </View>
+
 
       <Modal animationType="fade" transparent visible={userTOnMapVisible}>
         <View style={styles.userTOnMapOverlay}>
@@ -235,6 +260,29 @@ const GeneralMap = () => {
 };
 
 const styles = StyleSheet.create({
+
+  // insertions from meli
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  map: {
+    width: '100%',
+    height: '100%',
+  },
+
+  marker: {
+    width: 50,
+    height: 50,
+    resizeMode: "contain",
+    borderRadius: 30,
+    borderWidth: 2,
+    borderColor: 'white'
+  },
+
+
   userLayout: {
     height: 50,
     width: 50,
@@ -429,3 +477,5 @@ const styles = StyleSheet.create({
 });
 
 export default GeneralMap;
+
+
