@@ -13,6 +13,7 @@ import AppleHealthKit, { Constants } from 'react-native-health';
 // const WalkingAsymmetry = () => {
 //   const navigation = useNavigation();
 
+// just ADDED
 const WalkingAsymmetry = () => {
 
   const navigation = useNavigation();
