@@ -40,10 +40,13 @@ const Profile = () => {
         <View style={[styles.search2, styles.searchShadowBox]} />
         <Text style={[styles.height, styles.ageTypo]}>Height</Text>
         <View style={[styles.search3, styles.searchShadowBox]} />
+        <View style={[styles.search4, styles.searchShadowBox]} />
         <Text style={[styles.weight, styles.ageTypo]}>Weight</Text>
         <Text style={[styles.text, styles.textTypo]}>21</Text>
         <Text style={[styles.text1, styles.textTypo]}>5’ 5”</Text>
         <Text style={[styles.text2, styles.text2Typo]}>125</Text>
+        <Text style={[styles.phonenumber, styles.ageTypo]}>Phone Number</Text>
+        <Text style={[styles.text3, styles.text2Typo]}>(512) 123 - 4567</Text>
       </Pressable>
       <Image
         style={styles.maskGroupIcon}
@@ -152,8 +155,15 @@ const styles = StyleSheet.create({
   search3: {
     top: 435,
   },
+  search4: {
+    top: 530,
+  },
   weight: {
     top: 405,
+    left: 63,
+  },
+  phonenumber: {
+    top: 500,
     left: 63,
   },
   text: {
@@ -164,6 +174,10 @@ const styles = StyleSheet.create({
   },
   text2: {
     top: 447,
+    left: 68,
+  },
+  text3: {
+    top: 542,
     left: 68,
   },
   profileSettings: {
