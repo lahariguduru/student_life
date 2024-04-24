@@ -1,16 +1,41 @@
-import * as React from "react";
+
 import { Image } from "expo-image";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import FivePercentContainer from "../components/FivePercentContainer";
 import GroupComponent from "../components/GroupComponent";
 import ArrowComponent from "../components/ArrowComponent";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import React, { useEffect, useState } from 'react';
+import { LineChart } from 'react-native-chart-kit';
+import axios from 'axios';
+
 
 const HeartRate = () => {
   const navigation = useNavigation();
+  const [heartRateData, setHeartRateData] = useState({ timestamps: [], bpm: [] });
 
+  useEffect(() => {
+    const fetchHeartRateData = async () => {
+      try {
+        const response = await axios.get('http://10.26.104.196:5000/heart_rate');
+        console.log('Received heart rate data:', response.data);
+        if (Array.isArray(response.data.bpm)) {
+          setHeartRateData({
+            timestamps: response.data.timestamp,
+            bpm: response.data.bpm
+          });
+        } else {
+          console.error('Received data.bpm is not an array:', response.data.bpm);
+        }
+      } catch (error) {
+        console.error('Failed to fetch heart rate data:', error);
+      }
+    };
+
+    fetchHeartRateData();
+  }, []);
   return (
     <LinearGradient
       style={styles.heartRate}
@@ -31,41 +56,31 @@ const HeartRate = () => {
       <Text style={[styles.bpm2, styles.bpmTypo]}>80 bpm</Text>
       <Text style={[styles.bpm3, styles.bpm3Typo]}>100 bpm</Text>
       <Text style={[styles.heartRate1, styles.textClr]}>Heart Rate</Text>
-      <Image
-        style={[styles.heartRateItem, styles.heartLayout]}
-        contentFit="cover"
-        source={require("../assets/vector-2.png")}
-      />
-      <Image
-        style={[styles.heartRateInner, styles.heartLayout]}
-        contentFit="cover"
-        source={require("../assets/vector-2.png")}
-      />
-      <Image
-        style={[styles.vectorIcon, styles.heartLayout]}
-        contentFit="cover"
-        source={require("../assets/vector-2.png")}
-      />
-      <Image
-        style={[styles.heartRateChild1, styles.heartChildLayout]}
-        contentFit="cover"
-        source={require("../assets/vector-7.png")}
-      />
-      <Image
-        style={[styles.heartRateChild2, styles.heartChildLayout]}
-        contentFit="cover"
-        source={require("../assets/vector-6.png")}
-      />
-      <Image
-        style={[styles.heartRateChild3, styles.heartLayout]}
-        contentFit="cover"
-        source={require("../assets/vector-2.png")}
-      />
-      <Image
-        style={styles.heartRateChild4}
-        contentFit="cover"
-        source={require("../assets/vector-8.png")}
-      />
+
+      
+      {heartRateData.bpm.length > 0 && (
+        <LineChart
+          data={{
+            labels: heartRateData.timestamps,
+            datasets: [{ data: heartRateData.bpm }]
+          }}
+          width={400}  // Width of the chart
+          height={220}  // Height of the chart
+          chartConfig={{
+            backgroundColor: '#ffffff',
+            backgroundGradientFrom: '#ffffff',
+            backgroundGradientTo: '#ffffff',
+            decimalPlaces: 0,
+            color: (opacity = 1) => `rgba(255, 99, 132, ${opacity})`,  // Optional, this is the color of the line (pink)
+            labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,  // Labels color
+          }}
+          bezier
+          style={{
+            marginVertical: 8,
+            borderRadius: 16
+          }}
+        />
+      )}
       <View style={[styles.contactParent, styles.contactLayout]}>
         <View style={[styles.contact, styles.contactLayout]} />
         <Text style={[styles.bpm4, styles.bpmTypo]}>BPM</Text>

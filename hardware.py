@@ -50,20 +50,25 @@ app = Flask(__name__)
 class User:
 
 
-    def __init__(self, gender, weight, bac, heartrate, yaxis, units):
+    def __init__(self, gender, weight):
         self.gender = gender
         self.weight = weight
         self.bac = 0
-        self.heartrate = heartrate
-        self.yaxis = yaxis
+        self.heartrate = 0
+        self.yaxis = 0
         self.units = 0
         self.hours = 0
+
 
     def set_heartrate(self, rate):
         self.heartrate = rate
     
     def get_heartrate(self):
-        return self.heartrate
+        heart_rate_data = {
+            "timestamp": ["2024-04-23T10:00", "2024-04-23T10:01", "2024-04-23T10:02", "2024-04-23T10:03", "2024-04-23T10:04", "2024-04-23T10:05"],
+            "bpm": [61, 63, 62, 60, 64, 63]
+        }
+        return jsonify(heart_rate_data)
     
     def increment_units(self):
         units += 1
@@ -84,6 +89,19 @@ class User:
         
     def get_bac(self):
         return self.bac
-    
+
+sarah = User("female", 125)
+@app.route('/heartrate', methods=['GET'])
+def heartrate():
+    return jsonify(sarah.get_heartrate())
+
+@app.route('/bac', methods=['GET', 'POST'])
+def bac():
+    if request.method == 'POST':
+        hours = request.json.get('hours', 0)
+        sarah.set_bac(hours)
+        return jsonify({"success": True, "bac": sarah.get_bac()})
+    else:
+        return jsonify({"bac": sarah.get_bac()})
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
