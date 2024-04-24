@@ -19,7 +19,7 @@ const HeartRate = () => {
   useEffect(() => {
     const fetchHeartRateData = async () => {
       try {
-        const response = await axios.get('http://10.26.104.196:5000/heart_rate');
+        const response = await axios.get('http://10.154.222.19:5000/heart_rate');
         console.log('Received heart rate data:', response.data);
         if (Array.isArray(response.data.bpm)) {
           setHeartRateData({
