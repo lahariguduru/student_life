@@ -14,12 +14,12 @@ import axios from 'axios';
 
 const HeartRate = () => {
   const navigation = useNavigation();
-  const [heartRateData, setHeartRateData] = useState({ timestamps: [], bpm: [] });
+  const [heartRateData, setHeartRateData] = useRoute({ timestamps: [], bpm: [] });
 
   useEffect(() => {
     const fetchHeartRateData = async () => {
       try {
-        const response = await axios.get('http://10.154.222.19:5000/heart_rate');
+        const response = await axios.get('http://172.20.10.3:5000/heart_rate');
         console.log('Received heart rate data:', response.data);
         if (Array.isArray(response.data.bpm)) {
           setHeartRateData({
